@@ -16,6 +16,7 @@ public class InterfacePrivateTesting {
 		objIn.print(2, 4);
 		System.out.println(objIn.op(5, 6));
 		System.out.println(Interf.hello());
+		System.out.println("Java 9");
 	}
 
 }
