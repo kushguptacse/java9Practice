@@ -5,7 +5,6 @@ import java.util.List;
 
 public class InterfacePrivateTesting {
 	public static void main(String[] args) {
-		System.out.println("hello");
 		List<Integer> list = List.of(1, 2, 3, 4);
 //		list.set(0, 5); 
 		System.out.println(list);
@@ -15,19 +14,36 @@ public class InterfacePrivateTesting {
 		Interf objIn = (x, y) -> System.out.println(x + ":" + y);
 		objIn.print(2, 4);
 		System.out.println(objIn.op(5, 6));
-		System.out.println(Interf.hello());
 		System.out.println("Java 9");
+		System.out.println(Interf.hello());
+		// objIn.hello();// static interface method can only be called by interface name
+		// only
+		ClassF obj = new ClassF();
+		// obj.hello();
+		// ClassF.hello();
+		Interf.hello();// static interface method can only be called by interface name only
+		obj.op(2, 22);
+	}
+
+}
+
+class ClassF implements Interf {
+
+	@Override
+	public void print(int x, int y) {
+		System.out.println(x + "-" + y);
 	}
 
 }
 
 interface Interf {
 	default int op(int x, int y) {
+		Interf.hello();
 		return private_op(x, y);
 	}
 
 	static int hello() {
-		System.out.println("static method hello");
+		printMessage("static method hello");
 		return 1;
 	}
 
@@ -37,6 +53,10 @@ interface Interf {
 
 	private int method2(int x, int y) {
 		return x + y;
+	}
+
+	private static void printMessage(String s) {
+		System.out.println(s);
 	}
 
 	void print(int x, int y);
