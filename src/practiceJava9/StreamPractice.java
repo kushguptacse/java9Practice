@@ -18,7 +18,7 @@ public class StreamPractice {
 		System.out.println("java 9 iterate method");
 		Stream.iterate(0, x -> x <= 9, x -> x + 1).forEach(System.out::print);
 		System.out.println();
-		List<String> list = Stream.of("a", "b", null).flatMap(x -> Stream.ofNullable(x)).collect(Collectors.toList());
+		List<String> list = Stream.of("a", "b", null,"c").flatMap(x -> Stream.ofNullable(x)).collect(Collectors.toList());
 		System.out.println(list);
 		Map<String, String> map = new HashMap<>();
 		map.put("a", "apple");
@@ -26,5 +26,6 @@ public class StreamPractice {
 		map.put("b", "ball");
 		map.put("d", null);
 		map.entrySet().stream().flatMap(e -> Stream.ofNullable(e.getKey())).forEach(x -> System.out.println(x));
+		map.entrySet().stream().flatMap(e -> Stream.ofNullable(e.getValue())).forEach(x -> System.out.println(x));
 	}
 }
