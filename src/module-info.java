@@ -1,9 +1,3 @@
-/**
- * 
- */
-/**
- * @author G521885
- *
- */
 module practiceJava9 {
+	requires jdk.incubator.httpclient;
 }
